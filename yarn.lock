@@ -5936,13 +5936,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/sdk-runtime@npm:1.0.7":
-  version: 1.0.7
-  resolution: "@wix/sdk-runtime@npm:1.0.7"
+"@wix/sdk-runtime@npm:1.0.10":
+  version: 1.0.10
+  resolution: "@wix/sdk-runtime@npm:1.0.10"
   dependencies:
     "@wix/sdk-context": 0.0.1
-    "@wix/sdk-types": 1.17.3
-  checksum: a13f1d934c9ea823c67e84a1452b9bf492132780e6f5a09c79d88739b4d03282e3bf9b836f0d3524e95331d67909237ecd6a9982933234cf3b62ddd7a0f19a8e
+    "@wix/sdk-types": 1.17.6
+  checksum: 979ecedf0fb2fa69326fa5dd2fb7950143cec7e124c2295a9974300fa63be4b18acf7affa565f9bd8bee172d18a3bd3c0906a87e766215b506a0daf038ea81d9
   languageName: node
   linkType: hard
 
@@ -5966,17 +5966,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/sdk-types@npm:1.17.3":
-  version: 1.17.3
-  resolution: "@wix/sdk-types@npm:1.17.3"
-  dependencies:
-    "@wix/error-handler-types": ^1.19.0
-    "@wix/monitoring-types": ^0.12.0
-    type-fest: ^4.41.0
-  checksum: e26b7a358425119352f4fa8b22120d8c430f7f8425a0f1a6108e200e03130ca5d8809e10add6140d1f815d672a6326457dd4c28300d55a249d7c71b31464d58a
-  languageName: node
-  linkType: hard
-
 "@wix/sdk-types@npm:1.17.4, @wix/sdk-types@npm:^1.13.2, @wix/sdk-types@npm:^1.13.41, @wix/sdk-types@npm:^1.17.3, @wix/sdk-types@npm:^1.17.4":
   version: 1.17.4
   resolution: "@wix/sdk-types@npm:1.17.4"
@@ -5988,23 +5977,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wix/sdk-types@npm:1.17.6":
+  version: 1.17.6
+  resolution: "@wix/sdk-types@npm:1.17.6"
+  dependencies:
+    "@wix/error-handler-types": ^1.19.0
+    "@wix/monitoring-types": ^0.12.0
+    type-fest: ^4.41.0
+  checksum: e0fa3ac2d591c45633e2e360b191efcdc1312482a1b065218484b5f8a2df78572704e8753c0a64ff31799e1750c96048b1712a6f0c345833cc76dd308935c5f7
+  languageName: node
+  linkType: hard
+
 "@wix/sdk@npm:^1.15.24, @wix/sdk@npm:^1.17.1, @wix/sdk@npm:^1.5.0":
-  version: 1.21.3
-  resolution: "@wix/sdk@npm:1.21.3"
+  version: 1.21.5
+  resolution: "@wix/sdk@npm:1.21.5"
   dependencies:
     "@wix/identity": ^1.0.104
     "@wix/image-kit": ^1.114.0
     "@wix/redirects": ^1.0.70
     "@wix/sdk-context": 0.0.1
-    "@wix/sdk-runtime": 1.0.7
-    "@wix/sdk-types": 1.17.3
+    "@wix/sdk-runtime": 1.0.10
+    "@wix/sdk-types": 1.17.6
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     jose: ^5.10.0
     type-fest: ^4.41.0
   dependenciesMeta:
     graphql:
       optional: true
-  checksum: 490745b8ba75855d19a44a31827f6742460ce0689767e7cab10b9a93c7b90abdeb53976a39cc9ecfdd8d08d0ff5073123ba336edd6424d2a0538b31353e7aa67
+  checksum: a3ce967d405317f1e998fef67412a9095be409736e32e62f9115d07df7697374569489621c39ba7e4cdb501f3ee7866dc6d5e6a2c9e8dedae8ebb063ab6a7036
   languageName: node
   linkType: hard
 
