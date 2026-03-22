@@ -74,7 +74,7 @@ function EventCarousel({ items }: { items: EventDateBarItem[] }) {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 7000);
   }, [slides.length]);
 
   useEffect(() => {
@@ -98,7 +98,7 @@ function EventCarousel({ items }: { items: EventDateBarItem[] }) {
     <div
       className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${carouselBg(
         slide.category
-      )} p-5 sm:p-6 text-white transition-all duration-500`}
+      )} p-5 sm:p-6 text-white transition-all duration-700`}
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -164,8 +164,77 @@ function EventCarousel({ items }: { items: EventDateBarItem[] }) {
   return content;
 }
 
-export function EventDateBars({
-  title = 'Event Dates',
+/* ─── Standalone carousel block (homepage) ─── */
+export function EventCarouselBlock({ items }: { items: EventDateBarItem[] }) {
+  const upcoming = items.filter((i) => i.status === 'upcoming');
+  return (
+    <section className="max-w-6xl mx-auto px-6 sm:px-14 mt-8">
+      <div className="rounded-[24px] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm overflow-hidden">
+        <div className="px-6 sm:px-8 py-5 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+          <h2 className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50">
+            Featured Events
+          </h2>
+          <span className="text-xs text-zinc-400 dark:text-zinc-500">
+            {upcoming.length} upcoming
+          </span>
+        </div>
+        <div className="p-4 sm:p-6">
+          <EventCarousel items={items} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Dynamic tech divider ─── */
+function TechDivider() {
+  return (
+    <div
+      className="relative max-w-6xl mx-auto px-6 sm:px-14 my-4 h-10 flex items-center overflow-hidden select-none"
+      aria-hidden="true"
+    >
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
+      </div>
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent translate-y-[2px]" />
+      </div>
+      {/* Scan pulse */}
+      <div className="absolute inset-y-0 left-0 w-full">
+        <div
+          className="absolute top-1/2 -translate-y-1/2 h-4 w-24 rounded-full bg-gradient-to-r from-transparent via-sky-400/50 to-transparent blur-sm"
+          style={{ animation: 'scan-h 4s ease-in-out infinite' }}
+        />
+      </div>
+      {/* Dot accents */}
+      <div className="relative flex w-full items-center justify-between">
+        <div className="h-1.5 w-1.5 rounded-full bg-sky-500/60" />
+        <div className="h-1 w-1 rounded-full bg-indigo-400/40" />
+        <div className="h-1.5 w-1.5 rounded-full bg-emerald-500/50" />
+        <div className="h-1 w-1 rounded-full bg-cyan-400/40" />
+        <div className="h-1 w-1 rounded-full bg-amber-400/30" />
+        <div className="h-1.5 w-1.5 rounded-full bg-sky-500/60" />
+      </div>
+      <style jsx>{`
+        @keyframes scan-h {
+          0% {
+            left: -10%;
+          }
+          50% {
+            left: 90%;
+          }
+          100% {
+            left: -10%;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+/* ─── Event Calendar (list-only with dynamic header) ─── */
+export function EventCalendar({
+  title = 'Event Calendar',
   items,
 }: EventDateBarsProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -178,7 +247,6 @@ export function EventDateBars({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Stagger reveal each item
           items.forEach((_, idx) => {
             setTimeout(() => {
               setRevealed((prev) => {
@@ -199,110 +267,118 @@ export function EventDateBars({
   }, [items]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="max-w-6xl mx-auto px-6 sm:px-14 mt-8 mb-12"
-    >
-      <div className="rounded-[24px] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm overflow-hidden">
-        <div className="px-6 sm:px-8 py-5 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-          <h2 className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50">
-            {title}
-          </h2>
-          <span className="text-xs text-zinc-400 dark:text-zinc-500">
-            {items.filter((i) => i.status === 'upcoming').length} upcoming
-          </span>
-        </div>
+    <>
+      <TechDivider />
+      <section
+        ref={sectionRef}
+        className="max-w-6xl mx-auto px-6 sm:px-14 mb-12"
+      >
+        <div className="rounded-[24px] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm overflow-hidden">
+          <div className="px-6 sm:px-8 py-5 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+            <h2 className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50">
+              {title}
+            </h2>
+            <span className="text-xs text-zinc-400 dark:text-zinc-500">
+              {items.length} events
+            </span>
+          </div>
 
-        {/* Featured carousel */}
-        <div className="px-4 sm:px-6 pt-4 pb-2">
-          <EventCarousel items={items} />
-        </div>
-
-        <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-          {items.map((item, idx) => {
-            const Icon = categoryIcon(item.category || '');
-            const isVisible = revealed[idx] ?? false;
-            const inner = (
-              <div
-                className={`flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-4 border-l-[3px] ${accentColor(
-                  item.category
-                )} transition-all duration-500 ${
-                  item.href
-                    ? 'hover:bg-zinc-50 dark:hover:bg-zinc-800/50 cursor-pointer'
-                    : ''
-                }`}
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: `opacity 0.4s ease ${
-                    idx * 0.08
-                  }s, transform 0.4s ease ${idx * 0.08}s`,
-                }}
-              >
+          <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
+            {items.map((item, idx) => {
+              const Icon = categoryIcon(item.category || '');
+              const isVisible = revealed[idx] ?? false;
+              const inner = (
                 <div
-                  className={`hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${iconBg(
+                  className={`flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-4 border-l-[3px] ${accentColor(
                     item.category
-                  )}`}
+                  )} transition-all duration-500 ${
+                    item.href
+                      ? 'hover:bg-zinc-50 dark:hover:bg-zinc-800/50 cursor-pointer'
+                      : ''
+                  }`}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                    transition: `opacity 0.4s ease ${
+                      idx * 0.08
+                    }s, transform 0.4s ease ${idx * 0.08}s`,
+                  }}
                 >
-                  <Icon className="h-5 w-5" />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span
-                      className={`text-base font-medium text-zinc-950 dark:text-zinc-50 leading-snug ${
-                        item.href
-                          ? 'group-hover/datebar:text-sky-700 dark:group-hover/datebar:text-sky-300'
-                          : ''
-                      }`}
-                    >
-                      {item.title}
-                    </span>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                      {item.dateFormatted}
-                    </span>
+                  <div
+                    className={`hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${iconBg(
+                      item.category
+                    )}`}
+                  >
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 truncate">
-                    {item.location}
-                    {item.subtitle && item.subtitle !== item.location
-                      ? ` \u00b7 ${item.subtitle}`
-                      : ''}
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span
+                        className={`text-base font-medium text-zinc-950 dark:text-zinc-50 leading-snug ${
+                          item.href
+                            ? 'group-hover/datebar:text-sky-700 dark:group-hover/datebar:text-sky-300'
+                            : ''
+                        }`}
+                      >
+                        {item.title}
+                      </span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                        {item.dateFormatted}
+                      </span>
+                    </div>
+                    <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                      {item.location}
+                      {item.subtitle && item.subtitle !== item.location
+                        ? ` \u00b7 ${item.subtitle}`
+                        : ''}
+                    </div>
                   </div>
+
+                  <span
+                    className={`shrink-0 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${statusClasses(
+                      item.status
+                    )}`}
+                  >
+                    {statusLabel(item.status)}
+                  </span>
                 </div>
+              );
 
-                <span
-                  className={`shrink-0 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${statusClasses(
-                    item.status
-                  )}`}
-                >
-                  {statusLabel(item.status)}
-                </span>
-              </div>
-            );
+              if (item.href) {
+                return (
+                  <Link
+                    key={`${item.title}-${item.dateFormatted}`}
+                    href={item.href}
+                    className="group/datebar block focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500"
+                  >
+                    {inner}
+                  </Link>
+                );
+              }
 
-            if (item.href) {
               return (
-                <Link
+                <div
                   key={`${item.title}-${item.dateFormatted}`}
-                  href={item.href}
-                  className="group/datebar block focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500"
+                  className="group/datebar"
                 >
                   {inner}
-                </Link>
+                </div>
               );
-            }
-
-            return (
-              <div
-                key={`${item.title}-${item.dateFormatted}`}
-                className="group/datebar"
-              >
-                {inner}
-              </div>
-            );
-          })}
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
+  );
+}
+
+/* ─── Legacy combined export ─── */
+export function EventDateBars({ title, items }: EventDateBarsProps) {
+  return (
+    <>
+      <EventCarouselBlock items={items} />
+      <EventCalendar title={title} items={items} />
+    </>
   );
 }
