@@ -1,28 +1,21 @@
-import { CartBag } from '@app/components/CartBag/CartBag';
+'use client';
 import { NavBar } from './NavBar/NavBar';
-import { Login } from '@app/components/Login/Login';
-import testIds from '@app/utils/test-ids';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => (
   <>
-    <header
-      className="h-header z-40 w-full"
-      data-testid={testIds.LAYOUT.HEADER}
-    >
-      <div className="flex px-6 sm:px-14 h-header items-center gap-4 sm:gap-8">
+    <header className="relative z-[3000] h-header w-full border-b border-zinc-200/70 dark:border-zinc-700/70 bg-white/80 dark:bg-zinc-950/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 supports-[backdrop-filter]:dark:bg-zinc-950/70">
+      <div className="flex px-6 sm:px-14 h-header items-center gap-3 sm:gap-6">
         <h2 className="flex-1">
-          <a href="/">TALI$A KIDD</a>
+          <a
+            href="/"
+            className="rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          >
+            IFToMM YFG
+          </a>
         </h2>
-        <div>
-          <Login />
-        </div>
-
-        <div>
-          <CartBag />
-        </div>
-        <div>
-          <NavBar />
-        </div>
+        <ThemeToggle />
+        <NavBar />
       </div>
     </header>
   </>

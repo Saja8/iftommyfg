@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#d1fae5" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)" />
+  <path
+    d="M0 390 130 280 250 360 380 230 540 410 650 300 800 390V600H0Z"
+    fill="#0f172a"
+    opacity="0.9"
+  />
+  <path
+    d="M0 460 130 360 250 420 400 310 560 470 680 380 800 470V600H0Z"
+    fill="#334155"
+  />
+  <circle cx="270" cy="245" r="78" fill="#f8fafc" opacity="0.92" />
+  <circle cx="270" cy="245" r="34" fill="#93c5fd" />
+  <circle cx="270" cy="245" r="18" fill="#0f172a" />
+  <path
+    d="M270 153v38M270 299v38M178 245h38M324 245h38M205 180l28 28M307 282l28 28M335 180l-28 28M233 282l-28 28"
+    stroke="#0f172a"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <rect
+    x="450"
+    y="120"
+    width="220"
+    height="146"
+    rx="24"
+    fill="#082f49"
+    opacity="0.85"
+  />
+  <text
+    x="485"
+    y="178"
+    fill="#e0f2fe"
+    font-family="Arial, sans-serif"
+    font-size="28"
+    font-weight="700"
+  >
+    Mechanics
+  </text>
+  <text
+    x="485"
+    y="216"
+    fill="#bae6fd"
+    font-family="Arial, sans-serif"
+    font-size="22"
+  >
+    Kinematics and dynamics
+  </text>
+</svg>

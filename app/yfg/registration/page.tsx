@@ -1,0 +1,123 @@
+import Link from 'next/link';
+import EventPageNav from '@app/components/EventPageNav';
+import { YFG_PAGE_NAV_ITEMS } from '@app/data/eventPageNav';
+
+const OFFICIAL_SECOND_YFG_URL = 'https://iftomm-yfgs2026.sciencesconf.org';
+
+export default function YFGRegistrationPage() {
+  return (
+    <div className="relative overflow-hidden pt-16">
+      <section className="px-6 py-10 sm:px-14 sm:py-12">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[32px] border border-sky-100 bg-white shadow-[0_35px_90px_rgba(15,23,42,0.08)] dark:border-sky-500/20 dark:bg-zinc-900">
+          <div className="relative px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.12),transparent_40%),radial-gradient(circle_at_90%_20%,rgba(34,211,238,0.10),transparent_34%),linear-gradient(135deg,#f0f9ff_0%,#f8fdff_54%,#ffffff_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.14),transparent_40%),radial-gradient(circle_at_90%_20%,rgba(34,211,238,0.10),transparent_34%),linear-gradient(135deg,#082f49_0%,#0f172a_58%,#09090b_100%)]"
+            />
+            <div className="relative">
+              <p className="text-xs uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">
+                IFToMM YFG Symposia
+              </p>
+              <h1 className="mt-4 text-4xl leading-[0.94] tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-6xl">
+                Registration
+                <span className="mt-1 block text-sky-700 dark:text-cyan-300">
+                  on the official site
+                </span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base">
+                The live YFG symposium registration is handled on the official
+                SciencesConf website for the 2nd IFToMM YFG Symposium in
+                Monastir, Tunisia.
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <a
+                  href={OFFICIAL_SECOND_YFG_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                >
+                  Open official site
+                </a>
+                <Link
+                  href="/yfg"
+                  className="inline-flex items-center justify-center rounded-xl border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-800 transition-colors hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
+                >
+                  Back to overview
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <EventPageNav items={YFG_PAGE_NAV_ITEMS} activeHref="/yfg/registration" />
+
+      <section className="px-6 pb-12 sm:px-14 sm:pb-14">
+        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.04fr_0.96fr]">
+          <div className="rounded-[28px] border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
+            <div className="text-xs uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">
+              Current edition
+            </div>
+            <h2 className="mt-3 text-2xl leading-tight text-zinc-950 dark:text-zinc-100">
+              2nd IFToMM YFG Symposium
+            </h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 dark:border-zinc-700 dark:bg-zinc-800/80">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Date
+                </div>
+                <div className="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  Apr 15–17, 2026
+                </div>
+              </div>
+              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 dark:border-zinc-700 dark:bg-zinc-800/80">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Location
+                </div>
+                <div className="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  Monastir, Tunisia
+                </div>
+              </div>
+              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 dark:border-zinc-700 dark:bg-zinc-800/80">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Platform
+                </div>
+                <div className="mt-2 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  SciencesConf
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[28px] border border-zinc-200 bg-[#ecf4f9] p-6 shadow-sm dark:border-zinc-800 dark:bg-[#10212d] sm:p-8">
+            <div className="text-xs uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">
+              How to register
+            </div>
+            <div className="mt-5 space-y-3 text-sm leading-7 text-zinc-700 dark:text-zinc-200">
+              <div className="rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+                1. Open the official symposium website.
+              </div>
+              <div className="rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+                2. Use the live registration instructions published there.
+              </div>
+              <div className="rounded-2xl border border-zinc-200 bg-white/80 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+                3. Check that site for current programme, submission, and
+                registration updates.
+              </div>
+            </div>
+
+            <a
+              href={OFFICIAL_SECOND_YFG_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+            >
+              Open official site
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

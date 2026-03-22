@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)" />
+  <path
+    d="M0 390 150 290 280 350 420 240 560 390 680 300 800 370V600H0Z"
+    fill="#1e293b"
+    opacity="0.88"
+  />
+  <rect
+    x="160"
+    y="290"
+    width="430"
+    height="190"
+    rx="24"
+    fill="#f8fafc"
+    stroke="#0f172a"
+    stroke-width="10"
+  />
+  <rect x="220" y="336" width="96" height="70" rx="10" fill="#bfdbfe" />
+  <rect x="350" y="336" width="96" height="70" rx="10" fill="#bfdbfe" />
+  <rect x="480" y="336" width="56" height="70" rx="10" fill="#bfdbfe" />
+  <rect x="318" y="250" width="114" height="56" rx="14" fill="#0f172a" />
+  <path d="M182 290h386l-54-64H236Z" fill="#334155" />
+  <text
+    x="220"
+    y="530"
+    fill="#0f172a"
+    font-family="Arial, sans-serif"
+    font-size="28"
+    font-weight="700"
+  >
+    Host campus and lab visits
+  </text>
+</svg>

@@ -2,10 +2,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@statics/*": ["public/*"],
-      "@app/*": ["app/*"],
-      "@tests/*": ["tests/*"],
-      "@api/*": ["src/pages/api/*"]
+      "@statics/*": [
+        "public/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ],
+      "@tests/*": [
+        "tests/*"
+      ],
+      "@api/*": [
+        "src/pages/api/*"
+      ]
     },
     "target": "es2015",
     "lib": [
