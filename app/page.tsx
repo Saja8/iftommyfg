@@ -143,8 +143,8 @@ export default function HomePage() {
             <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-zinc-950 sm:min-h-[480px] rounded-r-[28px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/hero-mechanism.svg"
-                alt="Mechanism illustration representing IFToMM YFG event categories — interlocking gears for symposia, HMDS, summer school, winter school, and meetings"
+                src="/images/hero-mechanism.svg?v=6"
+                alt="Animated mechanism illustration — orbiting gears, robotic arm, four-bar linkage, rover, satellite, and people meeting around a table"
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>

@@ -64,18 +64,34 @@ function carouselBg(category?: string) {
   return 'from-zinc-600 to-zinc-800';
 }
 
-function EventCarousel({ items }: { items: EventDateBarItem[] }) {
+function getSlides(items: EventDateBarItem[]) {
   const upcoming = items.filter((i) => i.status === 'upcoming');
-  const slides = upcoming.length > 0 ? upcoming : items.slice(0, 3);
-  const [current, setCurrent] = useState(0);
+  return upcoming.length > 0 ? upcoming : items.slice(0, 3);
+}
+
+type CarouselControlProps = {
+  controlledIndex?: number;
+  onGoTo?: (idx: number) => void;
+};
+
+function EventCarousel({
+  items,
+  controlledIndex,
+  onGoTo,
+}: { items: EventDateBarItem[] } & CarouselControlProps) {
+  const slides = getSlides(items);
+  const isControlled = controlledIndex !== undefined;
+  const [internalCurrent, setInternalCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
+  const current = isControlled ? controlledIndex : internalCurrent;
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
+    if (isControlled) return; // parent drives timing
     timerRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 7000);
-  }, [slides.length]);
+      setInternalCurrent((prev) => (prev + 1) % slides.length);
+    }, 3000);
+  }, [slides.length, isControlled]);
 
   useEffect(() => {
     resetTimer();
@@ -86,23 +102,26 @@ function EventCarousel({ items }: { items: EventDateBarItem[] }) {
 
   if (slides.length === 0) return null;
 
-  const slide = slides[current];
+  const slide = slides[current % slides.length];
   const Icon = categoryIcon(slide.category || '');
 
   const goTo = (idx: number) => {
-    setCurrent(idx);
-    resetTimer();
+    if (onGoTo) onGoTo(idx);
+    else {
+      setInternalCurrent(idx);
+      resetTimer();
+    }
   };
 
   const content = (
     <div
       className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${carouselBg(
         slide.category
-      )} p-5 sm:p-6 text-white transition-all duration-700`}
+      )} p-5 sm:p-6 text-white transition-all duration-500`}
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-      <div className="relative flex items-start gap-4">
+      <div className="relative flex items-start gap-4 min-h-[88px]">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
           <Icon className="h-6 w-6" />
         </div>
@@ -165,7 +184,11 @@ function EventCarousel({ items }: { items: EventDateBarItem[] }) {
 }
 
 /* ─── Standalone carousel block (homepage) ─── */
-export function EventCarouselBlock({ items }: { items: EventDateBarItem[] }) {
+export function EventCarouselBlock({
+  items,
+  controlledIndex,
+  onGoTo,
+}: { items: EventDateBarItem[] } & CarouselControlProps) {
   const upcoming = items.filter((i) => i.status === 'upcoming');
   return (
     <section className="max-w-6xl mx-auto px-6 sm:px-14 mt-8">
@@ -179,7 +202,11 @@ export function EventCarouselBlock({ items }: { items: EventDateBarItem[] }) {
           </span>
         </div>
         <div className="p-4 sm:p-6">
-          <EventCarousel items={items} />
+          <EventCarousel
+            items={items}
+            controlledIndex={controlledIndex}
+            onGoTo={onGoTo}
+          />
         </div>
       </div>
     </section>
@@ -187,7 +214,17 @@ export function EventCarouselBlock({ items }: { items: EventDateBarItem[] }) {
 }
 
 /* ─── Dynamic tech divider ─── */
-function TechDivider() {
+function TechDivider({ onCycle }: { onCycle?: () => void }) {
+  const pulseRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = pulseRef.current;
+    if (!el || !onCycle) return;
+    const handler = () => onCycle();
+    el.addEventListener('animationiteration', handler);
+    return () => el.removeEventListener('animationiteration', handler);
+  }, [onCycle]);
+
   return (
     <div
       className="relative max-w-6xl mx-auto px-6 sm:px-14 my-4 h-10 flex items-center overflow-hidden select-none"
@@ -202,8 +239,8 @@ function TechDivider() {
       {/* Scan pulse */}
       <div className="absolute inset-y-0 left-0 w-full">
         <div
-          className="absolute top-1/2 -translate-y-1/2 h-4 w-24 rounded-full bg-gradient-to-r from-transparent via-sky-400/50 to-transparent blur-sm"
-          style={{ animation: 'scan-h 4s ease-in-out infinite' }}
+          ref={pulseRef}
+          className="scan-pulse absolute top-1/2 -translate-y-1/2 h-4 w-24 rounded-full bg-gradient-to-r from-transparent via-sky-400/50 to-transparent blur-sm"
         />
       </div>
       {/* Dot accents */}
@@ -227,6 +264,9 @@ function TechDivider() {
             left: -10%;
           }
         }
+        .scan-pulse {
+          animation: scan-h 3s ease-in-out infinite;
+        }
       `}</style>
     </div>
   );
@@ -236,7 +276,8 @@ function TechDivider() {
 export function EventCalendar({
   title = 'Event Calendar',
   items,
-}: EventDateBarsProps) {
+  onCycle,
+}: EventDateBarsProps & { onCycle?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [revealed, setRevealed] = useState<boolean[]>([]);
 
@@ -268,7 +309,7 @@ export function EventCalendar({
 
   return (
     <>
-      <TechDivider />
+      <TechDivider onCycle={onCycle} />
       <section
         ref={sectionRef}
         className="max-w-6xl mx-auto px-6 sm:px-14 mb-12"
@@ -313,25 +354,28 @@ export function EventCalendar({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span
-                        className={`text-base font-medium text-zinc-950 dark:text-zinc-50 leading-snug ${
-                          item.href
-                            ? 'group-hover/datebar:text-sky-700 dark:group-hover/datebar:text-sky-300'
-                            : ''
-                        }`}
-                      >
-                        {item.title}
-                      </span>
-                      <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                    <span
+                      className={`block text-base font-medium text-zinc-950 dark:text-zinc-50 leading-snug ${
+                        item.href
+                          ? 'group-hover/datebar:text-sky-700 dark:group-hover/datebar:text-sky-300'
+                          : ''
+                      }`}
+                    >
+                      {item.title}
+                    </span>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-0.5">
+                      <span className="text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-300 ease-out group-hover/datebar:text-zinc-700 dark:group-hover/datebar:text-zinc-200">
                         {item.dateFormatted}
                       </span>
-                    </div>
-                    <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 truncate">
-                      {item.location}
-                      {item.subtitle && item.subtitle !== item.location
-                        ? ` \u00b7 ${item.subtitle}`
-                        : ''}
+                      <span
+                        className="text-xs text-zinc-400 dark:text-zinc-500"
+                        aria-hidden="true"
+                      >
+                        ·
+                      </span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-400 truncate transition-colors duration-300 delay-75 ease-out group-hover/datebar:text-zinc-600 dark:group-hover/datebar:text-zinc-300">
+                        {item.location}
+                      </span>
                     </div>
                   </div>
 
@@ -375,10 +419,25 @@ export function EventCalendar({
 
 /* ─── Legacy combined export ─── */
 export function EventDateBars({ title, items }: EventDateBarsProps) {
+  const slides = getSlides(items);
+  const [current, setCurrent] = useState(0);
+
+  const advance = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % (slides.length || 1));
+  }, [slides.length]);
+
+  const goTo = useCallback((idx: number) => {
+    setCurrent(idx);
+  }, []);
+
   return (
     <>
-      <EventCarouselBlock items={items} />
-      <EventCalendar title={title} items={items} />
+      <EventCarouselBlock
+        items={items}
+        controlledIndex={current}
+        onGoTo={goTo}
+      />
+      <EventCalendar title={title} items={items} onCycle={advance} />
     </>
   );
 }
