@@ -100,7 +100,7 @@ export default function HomePage() {
   return (
     <div className="mx-auto relative pt-16">
       <section className="max-w-6xl mx-auto px-6 sm:px-14 pt-8 sm:pt-10">
-        <div className="relative overflow-hidden rounded-[28px] bg-zinc-900">
+        <div className="relative overflow-hidden rounded-[28px]">
           <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
             <div className="relative bg-stone-50 dark:bg-zinc-900 px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
               <div
@@ -140,10 +140,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-zinc-950 sm:min-h-[480px] rounded-r-[28px]">
+            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden sm:min-h-[480px] rounded-[20px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/hero-mechanism.svg?v=6"
+                src="/images/hero-mechanism.svg?v=11"
                 alt="Animated mechanism illustration — orbiting gears, robotic arm, four-bar linkage, rover, satellite, and people meeting around a table"
                 className="absolute inset-0 h-full w-full object-cover"
               />
