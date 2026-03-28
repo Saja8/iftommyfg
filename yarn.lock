@@ -5833,8 +5833,8 @@ __metadata:
   linkType: hard
 
 "@wix/ricos@npm:^10.112.0":
-  version: 10.163.1
-  resolution: "@wix/ricos@npm:10.163.1"
+  version: 10.168.0
+  resolution: "@wix/ricos@npm:10.168.0"
   dependencies:
     "@codemirror/lang-json": ^6.0.0
     "@codemirror/lint": ^6.0.0
@@ -5916,7 +5916,7 @@ __metadata:
     lodash: ^4.17.15
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
-  checksum: 0fe85a35d9e973e65da3f8bcda8f9ec24b170718603f184b65dc88594d0be84d6906d5086f2525c1769ba96286da154ab246d6118f3798448ae6a55f5a14295a
+  checksum: 06726caa2e1f756dd5e3a8dceb0ea8e1f237375794a81ceb12d0f0e0455665bfc7480ae6aece3ebe834b08a66b917728ec01760974c5fd4f5622720d58be485a
   languageName: node
   linkType: hard
 
