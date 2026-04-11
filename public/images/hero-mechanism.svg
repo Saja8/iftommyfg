@@ -15,6 +15,9 @@
     <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#f59e0b"/>
     </linearGradient>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f9a8d4"/><stop offset="55%" stop-color="#fb7185"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -657,23 +660,23 @@
     <line x1="0" y1="-1" x2="6" y2="5" stroke="#fb923c" stroke-width="1.2"/>
   </g>
 
-  <!-- Person riding piston (red-pink, slides horizontally) -->
-  <g opacity=".7">
+  <!-- EV car (slides horizontally with driver inside) -->
+  <g opacity=".84" filter="url(#glow)">
     <animateTransform attributeName="transform" type="translate" values="677.0 490;676.8 490;676.3 490;675.5 490;674.4 490;672.9 490;671.2 490;669.2 490;667.0 490;664.6 490;662.0 490;659.2 490;656.4 490;653.4 490;650.4 490;647.5 490;644.5 490;641.6 490;638.7 490;636.0 490;633.4 490;630.9 490;628.6 490;626.4 490;624.4 490;622.5 490;620.8 490;619.3 490;618.0 490;616.8 490;615.8 490;614.9 490;614.2 490;613.7 490;613.3 490;613.1 490;613.0 490;613.1 490;613.3 490;613.7 490;614.2 490;614.9 490;615.8 490;616.8 490;618.0 490;619.3 490;620.8 490;622.5 490;624.4 490;626.4 490;628.6 490;630.9 490;633.4 490;636.0 490;638.7 490;641.6 490;644.5 490;647.5 490;650.4 490;653.4 490;656.4 490;659.2 490;662.0 490;664.6 490;667.0 490;669.2 490;671.2 490;672.9 490;674.4 490;675.5 490;676.3 490;676.8 490;677.0 490" dur="6s" repeatCount="indefinite"/>
-    <!-- Head -->
-    <circle cx="0" cy="-18" r="5.5" fill="none" stroke="#f87171" stroke-width="1.4"/>
-    <!-- Body -->
-    <line x1="0" y1="-12.5" x2="0" y2="-1" stroke="#f87171" stroke-width="1.4"/>
-    <!-- Arms pumping (mimics piston!) -->
-    <line x1="0" y1="-9" x2="-7" y2="-6" stroke="#f87171" stroke-width="1.2">
-      <animate attributeName="x2" values="-7;-9;-7" dur="1s" repeatCount="indefinite"/>
-    </line>
-    <line x1="0" y1="-9" x2="7" y2="-6" stroke="#f87171" stroke-width="1.2">
-      <animate attributeName="x2" values="7;9;7" dur="1s" repeatCount="indefinite"/>
-    </line>
-    <!-- Legs standing -->
-    <line x1="0" y1="-1" x2="-5" y2="7" stroke="#f87171" stroke-width="1.2"/>
-    <line x1="0" y1="-1" x2="5" y2="7" stroke="#f87171" stroke-width="1.2"/>
+    <!-- Car body -->
+    <path d="M-27 4 L-19 -8 H5 L17 -1 H28 L28 8 H-27 Z" fill="none" stroke="#34d399" stroke-width="1.5" opacity=".88"/>
+    <path d="M-14 -8 L1 -8 L12 -1 H-20 Z" fill="none" stroke="#86efac" stroke-width="1.1" opacity=".8"/>
+    <circle cx="-14" cy="10" r="5" fill="none" stroke="#f8fafc" stroke-width="1.2"/>
+    <circle cx="16" cy="10" r="5" fill="none" stroke="#f8fafc" stroke-width="1.2"/>
+    <circle cx="-14" cy="10" r="1.8" fill="#f8fafc" opacity=".8"/>
+    <circle cx="16" cy="10" r="1.8" fill="#f8fafc" opacity=".8"/>
+    <text x="-1" y="6" font-family="monospace" font-size="6" fill="#a7f3d0" opacity=".8" text-anchor="middle">EV</text>
+    <path d="M22 -7 l4 0 -3 6 h4 l-7 8 2-6 h-4 z" fill="none" stroke="#fcd34d" stroke-width=".8" opacity=".85"/>
+    <!-- Driver inside -->
+    <circle cx="-2" cy="-8" r="4.2" fill="none" stroke="#f8fafc" stroke-width="1"/>
+    <line x1="-2" y1="-4" x2="-2" y2="3" stroke="#f8fafc" stroke-width=".9"/>
+    <line x1="-2" y1="-1" x2="-8" y2="1" stroke="#f8fafc" stroke-width=".8"/>
+    <line x1="-2" y1="-1" x2="3" y2="1" stroke="#f8fafc" stroke-width=".8"/>
   </g>
 
   <!-- Person standing at slider-crank pivot (teal) -->
@@ -774,14 +777,81 @@
     <path d="M-12,2 Q0,10 12,2" fill="none" stroke="#a5b4fc" stroke-width=".6"/>
   </g>
 
+  <!-- Satellite and astronaut vignette -->
+  <g opacity=".92" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" values="0 0;-10 8;8 18;16 10;0 0" dur="12s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" additive="sum" type="rotate" values="0 618 128;2 618 128;-1.5 618 128;0 618 128" dur="12s" repeatCount="indefinite"/>
+    <g transform="translate(628, 112)">
+      <!-- Satellite body -->
+      <rect x="-12" y="-9" width="24" height="18" rx="3" fill="none" stroke="#e2e8f0" stroke-width="1.2"/>
+      <rect x="-5" y="-4" width="10" height="8" rx="1.5" fill="none" stroke="#38bdf8" stroke-width=".8" opacity=".8"/>
+      <!-- Solar panels -->
+      <rect x="-40" y="-12" width="22" height="24" rx="2" fill="none" stroke="#a5b4fc" stroke-width="1"/>
+      <rect x="18" y="-12" width="22" height="24" rx="2" fill="none" stroke="#a5b4fc" stroke-width="1"/>
+      <line x1="-18" y1="0" x2="-12" y2="0" stroke="#94a3b8" stroke-width="1"/>
+      <line x1="12" y1="0" x2="18" y2="0" stroke="#94a3b8" stroke-width="1"/>
+      <!-- Dish -->
+      <path d="M0 9 Q8 17 0 25 Q-8 17 0 9" fill="none" stroke="#fcd34d" stroke-width=".9" opacity=".85"/>
+      <line x1="0" y1="9" x2="0" y2="17" stroke="#fcd34d" stroke-width=".8" opacity=".85"/>
+      <!-- Orbit link -->
+      <path d="M-64 24 C-36 -4 16 -6 54 12" fill="none" stroke="#38bdf8" stroke-width=".7" opacity=".35" stroke-dasharray="4 5"/>
+    </g>
+
+    <g transform="translate(560, 156) scale(1.08)">
+      <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0;5 -6;-2 -12;0 0" dur="6.5s" repeatCount="indefinite"/>
+      <!-- Tether -->
+      <path d="M0 0 C12 -10 24 -16 38 -18" fill="none" stroke="#e2e8f0" stroke-width=".9" opacity=".75"/>
+      <!-- Astronaut -->
+      <circle cx="0" cy="-16" r="6" fill="none" stroke="#f8fafc" stroke-width="1.2"/>
+      <rect x="-6" y="-10" width="12" height="15" rx="4" fill="none" stroke="#f8fafc" stroke-width="1.1"/>
+      <line x1="-3" y1="5" x2="-9" y2="15" stroke="#f8fafc" stroke-width="1"/>
+      <line x1="3" y1="5" x2="9" y2="15" stroke="#f8fafc" stroke-width="1"/>
+      <line x1="-6" y1="-5" x2="-15" y2="-1" stroke="#f8fafc" stroke-width="1"/>
+      <line x1="6" y1="-5" x2="16" y2="-11" stroke="#f8fafc" stroke-width="1"/>
+      <rect x="6" y="-8" width="7" height="10" rx="2" fill="none" stroke="#38bdf8" stroke-width=".8" opacity=".8"/>
+    </g>
+  </g>
+
+  <!-- Robot arm station -->
+  <g transform="translate(228, 440)" opacity=".82" filter="url(#glow)">
+    <animateTransform attributeName="transform" additive="sum" type="translate" values="0 0;6 -3;12 2;6 5;0 0" dur="10s" repeatCount="indefinite"/>
+    <!-- Base platform -->
+    <rect x="-22" y="18" width="54" height="10" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.1" opacity=".75"/>
+    <rect x="-4" y="-2" width="18" height="24" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.1" opacity=".78"/>
+    <circle cx="5" cy="-2" r="5" fill="none" stroke="#38bdf8" stroke-width="1.1"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="-18 5 -2;24 5 -2;-12 5 -2" dur="6s" repeatCount="indefinite"/>
+      <line x1="5" y1="-2" x2="42" y2="-28" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="42" cy="-28" r="4.5" fill="none" stroke="#7dd3fc" stroke-width="1"/>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" values="28 42 -28;-36 42 -28;20 42 -28" dur="4.5s" repeatCount="indefinite"/>
+        <line x1="42" y1="-28" x2="78" y2="-18" stroke="#a5f3fc" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="78" cy="-18" r="4" fill="none" stroke="#a5f3fc" stroke-width="1"/>
+        <line x1="78" y1="-18" x2="90" y2="-26" stroke="#e0f2fe" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="78" y1="-18" x2="90" y2="-12" stroke="#e0f2fe" stroke-width="1.3" stroke-linecap="round"/>
+      </g>
+    </g>
+    <!-- Operator beside base -->
+    <g transform="translate(-30, 14)">
+      <circle cx="0" cy="-18" r="5.5" fill="none" stroke="#fde68a" stroke-width="1.2"/>
+      <line x1="0" y1="-12" x2="0" y2="1" stroke="#fde68a" stroke-width="1.1"/>
+      <line x1="0" y1="-8" x2="7" y2="-2" stroke="#fde68a" stroke-width="1"/>
+      <line x1="0" y1="-8" x2="-8" y2="-2" stroke="#fde68a" stroke-width="1"/>
+      <line x1="0" y1="1" x2="-6" y2="10" stroke="#fde68a" stroke-width="1"/>
+      <line x1="0" y1="1" x2="6" y2="10" stroke="#fde68a" stroke-width="1"/>
+    </g>
+  </g>
+
   <!-- IFToMM YFG moving community name (scrolls across scene) -->
-  <text font-family="monospace" font-size="14" fill="#38bdf8" opacity=".25" letter-spacing="3" font-weight="bold">
-    IFToMM Young Faculty Group
-    <animateMotion path="M-250,300 C100,200 400,400 850,300" dur="18s" repeatCount="indefinite"/>
-  </text>
+  <g opacity=".9" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="translate" values="124 264;236 224;378 286;520 244;378 286;236 224;124 264" dur="18s" repeatCount="indefinite"/>
+    <text x="0" y="0" font-family="monospace" font-size="24" fill="url(#sunset)" opacity=".62" letter-spacing="2.5" font-weight="bold">
+      IFToMM Young Faculty Group
+    </text>
+  </g>
   <text font-family="monospace" font-size="11" fill="#a5b4fc" opacity=".18" letter-spacing="2">
     IFToMM · YFG · EVENTS
-    <animateMotion path="M850,520 C600,480 200,560 -250,500" dur="22s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="520 512;442 494;292 532;132 504;292 532;442 494;520 512" dur="22s" repeatCount="indefinite"/>
   </text>
 
   <!-- IFToMM text watermark (very subtle, center bottom) -->

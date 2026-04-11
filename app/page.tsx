@@ -126,24 +126,62 @@ export default function HomePage() {
                 together young researchers worldwide.
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                {HERO_LINKS.map((item) => (
+              <div className="mt-7 space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-800/90 px-4 py-2.5 text-sm font-medium text-zinc-800 dark:text-zinc-100 transition-colors hover:border-sky-200 hover:bg-zinc-50 dark:hover:border-sky-400/30 dark:hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                    href="/yfg"
+                    className="group rounded-2xl border border-sky-300/70 dark:border-sky-400/30 bg-gradient-to-br from-sky-100 to-cyan-100 dark:from-sky-500/15 dark:to-cyan-500/10 p-4 text-zinc-900 dark:text-zinc-100 transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
                   >
-                    <span className={`h-2.5 w-2.5 rounded-full ${item.dot}`} />
-                    {item.label}
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">
+                        <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
+                        Featured
+                      </span>
+                      <span className="text-sky-700/80 dark:text-sky-300/80">↗</span>
+                    </div>
+                    <p className="mt-2 text-base font-semibold">YFG Symposia</p>
+                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">
+                      Main symposium page and editions overview.
+                    </p>
                   </Link>
-                ))}
+
+                  <Link
+                    href="/hmds"
+                    className="group rounded-2xl border border-indigo-300/70 dark:border-indigo-400/30 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-500/15 dark:to-violet-500/10 p-4 text-zinc-900 dark:text-zinc-100 transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-indigo-700 dark:text-indigo-300">
+                        <span className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
+                        Featured
+                      </span>
+                      <span className="text-indigo-700/80 dark:text-indigo-300/80">↗</span>
+                    </div>
+                    <p className="mt-2 text-base font-semibold">HMDS</p>
+                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">
+                      Humanitarian and Medical Design Symposium details.
+                    </p>
+                  </Link>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {HERO_LINKS.slice(2).map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-800/90 px-3.5 py-2 text-xs font-medium text-zinc-800 dark:text-zinc-100 transition-colors hover:border-sky-200 hover:bg-zinc-50 dark:hover:border-sky-400/30 dark:hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                    >
+                      <span className={`h-2.5 w-2.5 rounded-full ${item.dot}`} />
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden sm:min-h-[480px] rounded-[20px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/hero-mechanism.svg?v=11"
+                src="/images/hero-mechanism.svg?v=16"
                 alt="Animated mechanism illustration — orbiting gears, robotic arm, four-bar linkage, rover, satellite, and people meeting around a table"
                 className="absolute inset-0 h-full w-full object-cover"
               />
