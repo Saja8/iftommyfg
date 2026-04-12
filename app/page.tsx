@@ -99,9 +99,9 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto relative pt-16">
-      <section className="max-w-6xl mx-auto px-6 sm:px-14 pt-8 sm:pt-10">
+      <section className="max-w-6xl 2xl:max-w-[88rem] mx-auto px-6 sm:px-14 pt-4 sm:pt-6">
         <div className="relative overflow-hidden rounded-[28px]">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="grid lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch">
             <div className="relative bg-stone-50 dark:bg-zinc-900 px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
               <div
                 aria-hidden="true"
@@ -178,12 +178,36 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden sm:min-h-[480px] rounded-[20px]">
+            <div className="relative min-h-[320px] overflow-hidden rounded-[20px] bg-[#050b23] sm:min-h-[480px] lg:min-h-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/hero-mechanism.svg?v=16"
+                src="/images/hero-mechanism.svg?v=18"
                 alt="Animated mechanism illustration — orbiting gears, robotic arm, four-bar linkage, rover, satellite, and people meeting around a table"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              {/* left edge fade */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-0 w-16 lg:w-24"
+                style={{ background: 'linear-gradient(to right, #050b23 0%, transparent 100%)' }}
+              />
+              {/* right edge fade */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-0 w-16 lg:w-24"
+                style={{ background: 'linear-gradient(to left, #050b23 0%, transparent 100%)' }}
+              />
+              {/* top edge fade */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 h-16 lg:h-24"
+                style={{ background: 'linear-gradient(to bottom, #050b23 0%, transparent 100%)' }}
+              />
+              {/* bottom edge fade */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-16 lg:h-24"
+                style={{ background: 'linear-gradient(to top, #050b23 0%, transparent 100%)' }}
               />
             </div>
           </div>
