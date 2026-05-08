@@ -89,7 +89,7 @@ export const YFG_EVENTS: YFGEvent[] = [
     status: 'upcoming',
     category: 'conference',
     registrationUrl: '/hmds/registration',
-    websiteUrl: 'https://hmds2026.vercel.app',
+    websiteUrl: 'https://hmds-murex.vercel.app',
     imagePlaceholder: 'HMDS',
   },
   {
@@ -106,7 +106,7 @@ export const YFG_EVENTS: YFGEvent[] = [
     venue: 'Tokyo Metropolitan University, Minami-Osawa Campus',
     status: 'past',
     category: 'conference',
-    websiteUrl: 'https://hmds2026.vercel.app',
+    websiteUrl: 'https://hmds-murex.vercel.app',
     imagePlaceholder: 'HMDS',
   },
   {

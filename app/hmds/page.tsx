@@ -4,7 +4,7 @@ import EventPageNav from '@app/components/EventPageNav';
 import { HMDS_PAGE_NAV_ITEMS } from '@app/data/eventPageNav';
 import { HMDS_TOPICS, HMDS_ORGANIZING, HMDS_TECHNICAL } from '@app/data/events';
 
-const HMDS_OFFICIAL_URL = 'https://hmds2026.vercel.app';
+const HMDS_OFFICIAL_URL = 'https://hmds-murex.vercel.app';
 
 export default function HMDSPage() {
   return (

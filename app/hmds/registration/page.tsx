@@ -3,7 +3,7 @@ import EventPageNav from '@app/components/EventPageNav';
 import { HMDS_PAGE_NAV_ITEMS } from '@app/data/eventPageNav';
 import { SITE_CONTACT_EMAIL, createSiteMailto } from '@app/data/siteContact';
 
-const HMDS_OFFICIAL_URL = 'https://hmds2026.vercel.app';
+const HMDS_OFFICIAL_URL = 'https://hmds-murex.vercel.app';
 const HMDS_CONTACT_MAILTO = createSiteMailto('HMDS 2027 Inquiry');
 
 export default function HMDSRegistrationPage() {
