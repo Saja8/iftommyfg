@@ -106,7 +106,7 @@ export const YFG_EVENTS: YFGEvent[] = [
     venue: 'Tokyo Metropolitan University, Minami-Osawa Campus',
     status: 'past',
     category: 'conference',
-    websiteUrl: 'https://hmds-murex.vercel.app',
+    websiteUrl: 'https://hmds2026.vercel.app',
     imagePlaceholder: 'HMDS',
   },
   {
