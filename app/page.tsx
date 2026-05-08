@@ -158,7 +158,7 @@ export default function HomePage() {
                     </div>
                     <p className="mt-2 text-base font-semibold">HMDS</p>
                     <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">
-                      Humanitarian and Medical Design Symposium details.
+                      Heterogeneous and Multi-Domain Systems symposium details.
                     </p>
                   </Link>
                 </div>
@@ -178,35 +178,35 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative min-h-[320px] overflow-hidden rounded-[20px] bg-[#050b23] sm:min-h-[480px] lg:min-h-0">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-[20px] bg-[#050b23] sm:aspect-[16/8] lg:aspect-auto lg:min-h-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/hero-mechanism.svg?v=18"
                 alt="Animated mechanism illustration — orbiting gears, robotic arm, four-bar linkage, rover, satellite, and people meeting around a table"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
-              {/* left edge fade */}
+              {/* left edge fade — only on desktop where image sits beside text */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 left-0 w-16 lg:w-24"
+                className="pointer-events-none absolute inset-y-0 left-0 hidden lg:block lg:w-24"
                 style={{ background: 'linear-gradient(to right, #050b23 0%, transparent 100%)' }}
               />
               {/* right edge fade */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 right-0 w-16 lg:w-24"
+                className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block lg:w-24"
                 style={{ background: 'linear-gradient(to left, #050b23 0%, transparent 100%)' }}
               />
               {/* top edge fade */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 top-0 h-16 lg:h-24"
+                className="pointer-events-none absolute inset-x-0 top-0 h-8 lg:h-24"
                 style={{ background: 'linear-gradient(to bottom, #050b23 0%, transparent 100%)' }}
               />
               {/* bottom edge fade */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-16 lg:h-24"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-8 lg:h-24"
                 style={{ background: 'linear-gradient(to top, #050b23 0%, transparent 100%)' }}
               />
             </div>

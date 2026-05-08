@@ -45,7 +45,7 @@ export default function WinterSchoolPage() {
                     Region
                   </div>
                   <div className="mt-2 text-sm font-medium text-zinc-900 dark:text-white">
-                    Biobio, Chile
+                    Biobío, Chile
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/70 bg-white/85 p-4 dark:border-white/10 dark:bg-white/10">
